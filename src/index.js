@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+import aileronRegular from './assets/fonts/Aileron/Aileron-Regular.otf';
+import bigJohn from './assets/fonts/Big John Slim Joe/BIG JOHN.otf';
+import finlandRoundedThin from './assets/fonts/Finland/Finland Rounded Thin.otf';
 
 // Inject global styles
 const GlobalStyle = createGlobalStyle`
-  @import url('./assets/fonts/Aileron/Aileron-Regular.otf');
-  @import url('./assets/fonts/Big\ John\ Slim\ Joe/BIG\ JOHN.otf');
-  @import url('./assets/fonts/Finland/Finland\ Rounded\ Thin.otf');
+  @import url(${aileronRegular});
+  @import url(${bigJohn});
+  @import url(${finlandRoundedThin});
 
   :root {
     font-size: 62.5%;
   }
 
   body {
-    background: #E1605F;
     margin: 0;
     padding: 0;
     font-size: 1.6rem;
@@ -26,10 +29,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <>
-    <App />
-    <GlobalStyle />
-  </>,
+  <BrowserRouter>
+    <>
+      <App />
+      <GlobalStyle />
+    </>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
