@@ -136,11 +136,11 @@ const Title = styled.h1`
   color: ${theme.colours.blue};
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
-  ${media.phoneS`font-size: 3rem;`}
+  ${media.phoneL`font-size: 3rem;`}
 `;
 
 const LinksContainer = styled.div`
-  ${media.phoneS`text-align: right;`}
+  ${media.phoneL`text-align: right;`}
 `;
 
 const StyledLink = styled.h2`
@@ -153,9 +153,9 @@ const StyledLink = styled.h2`
   padding: 0 20px;
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
-  ${media.phoneS`font-size: 4rem;`}
-  ${media.phoneS`padding: 10px 0;`}
-  ${media.phoneS`display: block;`}
+  ${media.phoneL`font-size: 4rem;`}
+  ${media.phoneL`padding: 10px 0;`}
+  ${media.phoneL`display: block;`}
 `;
 
 const SectionTitle = styled.h1`
