@@ -161,4 +161,7 @@ const StyledLink = styled.h2`
 const SectionTitle = styled.h1`
   color: ${theme.colours.blue};
   font-size: 8rem;
+  font-size: 8rem;
+  ${media.tablet`font-size: 7rem;`}
+  ${media.phone`font-size: 6rem;`}
 `
