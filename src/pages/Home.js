@@ -136,11 +136,11 @@ const Title = styled.h1`
   color: ${theme.colours.blue};
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
-  ${media.phone`font-size: 3rem;`}
+  ${media.phoneS`font-size: 3rem;`}
 `;
 
 const LinksContainer = styled.div`
-  ${media.phone`text-align: right;`}
+  ${media.phoneS`text-align: right;`}
 `;
 
 const StyledLink = styled.h2`
@@ -153,14 +153,16 @@ const StyledLink = styled.h2`
   padding: 0 20px;
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
-  ${media.phone`font-size: 4rem;`}
-  ${media.phone`padding: 10px 0;`}
-  ${media.phone`display: block;`}
+  ${media.phoneS`font-size: 4rem;`}
+  ${media.phoneS`padding: 10px 0;`}
+  ${media.phoneS`display: block;`}
 `;
 
 const SectionTitle = styled.h1`
   color: ${theme.colours.blue};
   font-size: 8rem;
   ${media.tablet`font-size: 7rem;`}
-  ${media.phone`font-size: 6rem;`}
+  ${media.phoneL`font-size: 6rem;`}
+  ${media.phoneM`font-size: 5rem;`}
+  ${media.phoneS`font-size: 4rem;`}
 `

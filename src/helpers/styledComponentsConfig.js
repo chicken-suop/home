@@ -9,9 +9,11 @@ export const theme = {
 };
 
 const sizes = {
-  desktop: 992,
+  desktop: 1024,
   tablet: 768,
-  phone: 576,
+  phoneL: 425,
+  phoneM: 375,
+  phoneS: 320,
 }
 
 // Iterate through the sizes and create a media template
