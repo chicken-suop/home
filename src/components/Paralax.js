@@ -79,14 +79,9 @@ export default class Paralax extends React.Component {
           WebkitTapHighlightColor: 'rgba(#000, 0)',
           ...(this.props.style ? this.props.style : {})
         }}
+        // Ignore "touches"
         onMouseMove={this.handleMove}
         onMouseLeave={() => this.setState({ layers: [] })}
-        onTouchMove={(evt) => {
-          evt.preventDefault()
-          const {pageX, pageY} = evt.touches[0]
-          this.handleMove({pageX, pageY})
-        }}
-        onTouchEnd={() => this.setState({ layers: [] })}
         ref={node => (this.root = node)}>
         <div style={{
           position: 'relative',
