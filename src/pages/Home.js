@@ -1,29 +1,81 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme, sizes, media } from '../helpers/styledComponentsConfig';
-import ratskin from '../assets/images/ratskin.svg';
+import Paralax from '../components/Paralax';
+import { theme, media } from '../helpers/styledComponentsConfig';
+import { HashLink as Link } from 'react-router-hash-link';
+import ratskin1 from '../assets/images/ratskin/1.svg';
+import ratskin2 from '../assets/images/ratskin/2.svg';
+import ratskin3 from '../assets/images/ratskin/3.svg';
+import ratskin4 from '../assets/images/ratskin/4.svg';
+import ratskin5 from '../assets/images/ratskin/5.svg';
+import ratskin6 from '../assets/images/ratskin/6.svg';
+import ratskin7 from '../assets/images/ratskin/7.svg';
 
 export default class Detail extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.aboutMe = React.createRef();
+  // }
+  //
+  // componentDidMount() {
+  //   // const aboutMe = parseInt(this.aboutMe.current.offsetHeight);
+  //   window.addEventListener('scroll', this.onScroll);
+  // }
+  //
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.onScroll);
+  // }
+  //
+  // onScroll(elemPos) {
+  //   console.log(window.scrollY);
+  //   // if (window.scrollY > elemPos) {
+  //   //   // Elem is visible
+  //   //   this.setState({ aboutMeVisible: true });
+  //   // } else {
+  //   //   this.setState({ aboutMeVisible: false });
+  //   // }
+  // }
+
   render() {
-    alert("🚧 Under developement 🚧")
+    // alert("🚧 Under developement 🚧")
     return (
-      <Container>
-        <Page>
+      <div>
+        <Section id="home">
           <Background>
-            <img src={ratskin} alt="Ratskin graphic left half" />
+            <Paralax
+              style={{
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+              }}
+            >
+              <img alt="Part 1" src={ratskin1} />
+              <img alt="Part 2" src={ratskin2} />
+              <img alt="Part 3" src={ratskin3} />
+              <img alt="Part 4" src={ratskin4} />
+              <img alt="Part 5" src={ratskin5} />
+              <img alt="Part 6" src={ratskin6} />
+              <img alt="Part 7" src={ratskin7} />
+            </Paralax>
             <LeftPart />
             <RightPart />
           </Background>
           <Inner>
-            <Title>Elliot<br />Schep</Title>
+            <Link smooth to="#home">
+              <Title>Elliot<br />Schep</Title>
+            </Link>
             <LinksContainer>
-              <StyledLink>work</StyledLink>
-              <StyledLink>about</StyledLink>
+              <Link smooth to="work">
+                <StyledLink>work</StyledLink>
+              </Link>
+              <Link smooth to="#about">
+                <StyledLink>about</StyledLink>
+              </Link>
               <StyledLink>resume</StyledLink>
             </LinksContainer>
           </Inner>
-        </Page>
-        <Page>
+        </Section>
+        <Section id="about">
           <Background>
             <LeftPaddingPart>
               Full-stack developer with interests in design & art, computer networking and sound recording/reproduction.
@@ -32,24 +84,27 @@ export default class Detail extends React.Component {
               I’m an independent, self-directed learner.
             </LeftPaddingPart>
             <RightPaddingPart>
-              <PageTitle>About me.</PageTitle>
+              <SectionTitle>About me.</SectionTitle>
             </RightPaddingPart>
           </Background>
-        </Page>
-      </Container>
+        </Section>
+      </div>
     );
   }
 }
 
-const Container = styled.div``;
-
-const Page = styled.div`
+const Section = styled.section`
   height: 100vh;
   position: relative;
 `;
 
 const Inner = styled.div`
-  position: relative;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 50px 0 150px;
   width: 83.33333%;
   margin: 0 auto;
@@ -62,32 +117,19 @@ const Inner = styled.div`
 `
 
 const Background = styled.div`
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  height: 100%;
+  width: 100%;
 `;
 
 const LeftPart = styled.div`
   width: 50%;
   height: 100%;
   display: inline-block;
-  background-color: #E1605F;
+  background-color: ${theme.colours.red};
 `;
 
 const RightPart = styled(LeftPart)`
-  background-color: #DFDFDF;
+  background-color: ${theme.colours.grey};
 `;
 
 const LeftPaddingPart = styled(LeftPart)`
@@ -99,7 +141,7 @@ const LeftPaddingPart = styled(LeftPart)`
   justify-content: center;
   color: #DFDFDF;
   font-size: 2rem;
-  background-color: #020B3C;
+  background-color: ${theme.colours.blue};
 `;
 
 const RightPaddingPart = styled(RightPart)`
@@ -112,10 +154,11 @@ const RightPaddingPart = styled(RightPart)`
 `;
 
 const Title = styled.h1`
+  pointer-events: initial;
   font-family: 'Big John';
   margin: 0;
   font-weight: normal;
-  color: #020B3C;
+  color: ${theme.colours.blue};
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
   ${media.phone`font-size: 3rem;`}
@@ -126,10 +169,11 @@ const LinksContainer = styled.div`
 `;
 
 const StyledLink = styled.h2`
+  pointer-events: initial;
   font-family: 'Finland Rounded';
   margin: 0;
   font-weight: normal;
-  color: #020B3C;
+  color: ${theme.colours.blue};
   display: inline-block;
   padding: 0 20px;
   font-size: 5rem;
@@ -139,7 +183,7 @@ const StyledLink = styled.h2`
   ${media.phone`display: block;`}
 `;
 
-const PageTitle = styled.h1`
-  color: #020B3C;
+const SectionTitle = styled.h1`
+  color: ${theme.colours.blue};
   font-size: 8rem;
 `
