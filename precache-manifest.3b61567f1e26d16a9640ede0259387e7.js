@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "10956b863c02c7e4c65c",
-    "url": "/home/static/js/main.10956b86.chunk.js"
+    "revision": "b8e6907cb372a496ca84",
+    "url": "/home/static/js/main.b8e6907c.chunk.js"
   },
   {
     "revision": "f9204a97bebf27d11577",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/home/static/media/Finland Rounded Thin.68077ca3.otf"
   },
   {
-    "revision": "25df7c2cf2b0b5862d1c08e9ce3c8c4b",
+    "revision": "825a5d3f415adafe98a5d8002e0446fa",
     "url": "/home/index.html"
   }
 ];
