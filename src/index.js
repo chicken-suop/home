@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import aileronRegular from './assets/fonts/Aileron/Aileron-Regular.otf';
 import bigJohn from './assets/fonts/Big John Slim Joe/BIG JOHN.otf';
 import finlandRoundedThin from './assets/fonts/Finland/Finland Rounded Thin.otf';
 
 // Inject global styles
 const GlobalStyle = createGlobalStyle`
-  @import url(${aileronRegular});
-  @import url(${bigJohn});
-  @import url(${finlandRoundedThin});
+  @font-face {
+     font-family: 'Aileron';
+     src: url(${aileronRegular});
+  }
+  @font-face {
+     font-family: 'Big John';
+     src: url(${bigJohn});
+  }
+  @font-face {
+     font-family: 'Finland Rounded';
+     src: url(${finlandRoundedThin});
+  }
 
   :root {
     font-size: 62.5%;
@@ -26,15 +35,20 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 ReactDOM.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <Router basename={process.env.PUBLIC_URL}>
     <>
       <App />
       <GlobalStyle />
     </>
-  </BrowserRouter>,
+  </Router>,
   document.getElementById('root')
 );
 
