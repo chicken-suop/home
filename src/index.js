@@ -11,16 +11,16 @@ import finlandRoundedThin from './assets/fonts/Finland/Finland Rounded Thin.otf'
 // Inject global styles
 const GlobalStyle = createGlobalStyle`
   @font-face {
-     font-family: 'Aileron';
-     src: url(${aileronRegular});
+     font-family: Aileron;
+     src: url('${aileronRegular}') format('opentype');
   }
   @font-face {
-     font-family: 'Big John';
-     src: url(${bigJohn});
+     font-family: BigJohn;
+     src: url('${bigJohn}') format('opentype');
   }
   @font-face {
-     font-family: 'Finland Rounded';
-     src: url(${finlandRoundedThin});
+     font-family: FinlandRounded;
+     src: url('${finlandRoundedThin}') format('opentype');
   }
 
   :root {

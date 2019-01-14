@@ -12,32 +12,7 @@ import ratskin6 from '../assets/images/ratskin/6.svg';
 import ratskin7 from '../assets/images/ratskin/7.svg';
 
 export default class Detail extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.aboutMe = React.createRef();
-  // }
-  //
-  // componentDidMount() {
-  //   // const aboutMe = parseInt(this.aboutMe.current.offsetHeight);
-  //   window.addEventListener('scroll', this.onScroll);
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener('scroll', this.onScroll);
-  // }
-  //
-  // onScroll(elemPos) {
-  //   console.log(window.scrollY);
-  //   // if (window.scrollY > elemPos) {
-  //   //   // Elem is visible
-  //   //   this.setState({ aboutMeVisible: true });
-  //   // } else {
-  //   //   this.setState({ aboutMeVisible: false });
-  //   // }
-  // }
-
   render() {
-    // alert("🚧 Under developement 🚧")
     return (
       <div>
         <Section id="home">
@@ -155,7 +130,7 @@ const RightPaddingPart = styled(RightPart)`
 
 const Title = styled.h1`
   pointer-events: initial;
-  font-family: 'Big John';
+  font-family: 'BigJohn';
   margin: 0;
   font-weight: normal;
   color: ${theme.colours.blue};
@@ -170,7 +145,7 @@ const LinksContainer = styled.div`
 
 const StyledLink = styled.h2`
   pointer-events: initial;
-  font-family: 'Finland Rounded';
+  font-family: 'FinlandRounded';
   margin: 0;
   font-weight: normal;
   color: ${theme.colours.blue};
