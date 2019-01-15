@@ -1,8 +1,8 @@
 {
-  "main.js": "/home/static/js/main.653efc12.chunk.js",
-  "main.js.map": "/home/static/js/main.653efc12.chunk.js.map",
-  "static/js/1.f9204a97.chunk.js": "/home/static/js/1.f9204a97.chunk.js",
-  "static/js/1.f9204a97.chunk.js.map": "/home/static/js/1.f9204a97.chunk.js.map",
+  "main.js": "/home/static/js/main.235d3466.chunk.js",
+  "main.js.map": "/home/static/js/main.235d3466.chunk.js.map",
+  "static/js/1.d40a51a6.chunk.js": "/home/static/js/1.d40a51a6.chunk.js",
+  "static/js/1.d40a51a6.chunk.js.map": "/home/static/js/1.d40a51a6.chunk.js.map",
   "runtime~main.js": "/home/static/js/runtime~main.e258ea17.js",
   "runtime~main.js.map": "/home/static/js/runtime~main.e258ea17.js.map",
   "static/media/1.svg": "/home/static/media/1.2eacad58.svg",
@@ -16,6 +16,6 @@
   "static/media/BIG JOHN.otf": "/home/static/media/BIG JOHN.aa3a0087.otf",
   "static/media/Finland Rounded Thin.otf": "/home/static/media/Finland Rounded Thin.68077ca3.otf",
   "index.html": "/home/index.html",
-  "precache-manifest.aebe056defdcaee595e381bc72dd12a9.js": "/home/precache-manifest.aebe056defdcaee595e381bc72dd12a9.js",
+  "precache-manifest.6f07f6be80140dd5b399a231176d6034.js": "/home/precache-manifest.6f07f6be80140dd5b399a231176d6034.js",
   "service-worker.js": "/home/service-worker.js"
 }
