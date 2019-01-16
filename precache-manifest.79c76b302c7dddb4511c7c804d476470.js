@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "/home/static/media/Finland Rounded Thin.68077ca3.otf"
   },
   {
-    "revision": "953534a2cef8b98b3d987e7dce17d7e0",
+    "revision": "6db566ac21f10bbe705bcfc4b93d344b",
     "url": "/home/index.html"
   }
 ];
