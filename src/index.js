@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     position: relative;
 
-    ::after {
+    :not(.without)::after {
       content: "";
       position: absolute;
       right: 0;
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
       bottom: -.625rem;
     }
 
-    :hover::after {
+    :not(.without):hover::after {
       opacity: 1;
       transform: scaleX(1);
     }
