@@ -1,8 +1,8 @@
 {
-  "main.js": "/home/static/js/main.235d3466.chunk.js",
-  "main.js.map": "/home/static/js/main.235d3466.chunk.js.map",
-  "static/js/1.d40a51a6.chunk.js": "/home/static/js/1.d40a51a6.chunk.js",
-  "static/js/1.d40a51a6.chunk.js.map": "/home/static/js/1.d40a51a6.chunk.js.map",
+  "main.js": "/home/static/js/main.0c40cdb7.chunk.js",
+  "main.js.map": "/home/static/js/main.0c40cdb7.chunk.js.map",
+  "static/js/1.676879d2.chunk.js": "/home/static/js/1.676879d2.chunk.js",
+  "static/js/1.676879d2.chunk.js.map": "/home/static/js/1.676879d2.chunk.js.map",
   "runtime~main.js": "/home/static/js/runtime~main.e258ea17.js",
   "runtime~main.js.map": "/home/static/js/runtime~main.e258ea17.js.map",
   "static/media/1.svg": "/home/static/media/1.2eacad58.svg",
@@ -12,10 +12,13 @@
   "static/media/5.svg": "/home/static/media/5.677e1439.svg",
   "static/media/6.svg": "/home/static/media/6.7fc7eb19.svg",
   "static/media/7.svg": "/home/static/media/7.e8e9b451.svg",
+  "static/media/01.png": "/home/static/media/01.ea35e2c4.png",
+  "static/media/02.png": "/home/static/media/02.ea35e2c4.png",
+  "static/media/03.png": "/home/static/media/03.ea35e2c4.png",
   "static/media/Aileron-Regular.otf": "/home/static/media/Aileron-Regular.d321fa78.otf",
   "static/media/BIG JOHN.otf": "/home/static/media/BIG JOHN.aa3a0087.otf",
   "static/media/Finland Rounded Thin.otf": "/home/static/media/Finland Rounded Thin.68077ca3.otf",
   "index.html": "/home/index.html",
-  "precache-manifest.6f07f6be80140dd5b399a231176d6034.js": "/home/precache-manifest.6f07f6be80140dd5b399a231176d6034.js",
+  "precache-manifest.05c63a42cedd31689906a2916789bfc7.js": "/home/precache-manifest.05c63a42cedd31689906a2916789bfc7.js",
   "service-worker.js": "/home/service-worker.js"
 }
