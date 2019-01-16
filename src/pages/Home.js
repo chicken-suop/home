@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Paralax from '../components/Paralax';
 import { theme, media } from '../helpers/styledComponentsConfig';
 import { HashLink as Link } from 'react-router-hash-link';
+import FitText from '@kennethormandy/react-fittext'
 import ratskin1 from '../assets/images/ratskin/1.svg';
 import ratskin2 from '../assets/images/ratskin/2.svg';
 import ratskin3 from '../assets/images/ratskin/3.svg';
@@ -10,9 +11,49 @@ import ratskin4 from '../assets/images/ratskin/4.svg';
 import ratskin5 from '../assets/images/ratskin/5.svg';
 import ratskin6 from '../assets/images/ratskin/6.svg';
 import ratskin7 from '../assets/images/ratskin/7.svg';
+import project01 from '../assets/images/projects/01.png';
+import project02 from '../assets/images/projects/02.png';
+import project03 from '../assets/images/projects/03.png';
 
 export default class Detail extends React.Component {
+  projects = [
+    {
+      key: '01',
+      title: 'Ratskin homepage',
+      date: '2018',
+      url: 'https://ratsk.in/',
+      image: project01,
+    },
+    {
+      key: '02',
+      title: 'Voom',
+      date: '2017',
+      url: 'https://voom.space/',
+      image: project02,
+    },
+    {
+      key: '03',
+      title: 'Thinkspace',
+      date: '2018',
+      url: 'https://www.thinkspacehq.com/',
+      image: project03,
+    },
+  ]
+
+  constructor() {
+    super();
+    this.state = {
+      activeProject: this.projects[0],
+    }
+  }
+
+  changeDot = (dot) => {
+    this.setState({ activeProject: dot })
+  }
+
   render() {
+    const { activeProject } = this.state;
+
     return (
       <div>
         <Section id="home">
@@ -40,27 +81,65 @@ export default class Detail extends React.Component {
               <Title>Elliot<br />Schep</Title>
             </Link>
             <LinksContainer>
-              <Link smooth to="work">
-                <StyledLink>work</StyledLink>
+              <Link smooth to="#my-projects">
+                <StyledLink>
+                  <PageLink>My projects</PageLink>
+                </StyledLink>
               </Link>
               <Link smooth to="#about">
-                <StyledLink>about</StyledLink>
+                <StyledLink>
+                  <PageLink>about</PageLink>
+                </StyledLink>
               </Link>
-              <StyledLink>resume</StyledLink>
+              <Link smooth to="#resume">
+                <StyledLink>
+                  <PageLink>resume</PageLink>
+                </StyledLink>
+              </Link>
             </LinksContainer>
           </Inner>
         </Section>
         <Section id="about">
-          <Background>
-            <LeftPaddingPart>
-              Full-stack developer with interests in design & art, computer networking and sound recording/reproduction.
-              <br />
-              <br />
-              I’m an independent, self-directed learner.
-            </LeftPaddingPart>
-            <RightPaddingPart>
-              <SectionTitle>About me.</SectionTitle>
-            </RightPaddingPart>
+          <LeftPaddingPart>
+            <FitText compressor={1.3}>
+              <SectionTitle color={theme.colours.grey}>
+                I’M A FULL-STACK DEVELOPER WHO CURRENTLY LIVES IN POLAND.
+              </SectionTitle>
+            </FitText>
+            <FitText compressor={2}>
+              <>
+                <p>
+                  I’m also an independent, self-directed learner and Australian.
+                  Some of my interests are design & art, computer networking and sound recording / reproduction.
+                </p>
+                <p>You can contact me at <PageLink href="mailto:elliot@ratsk.in">elliot@ratsk.in</PageLink></p>
+              </>
+            </FitText>
+          </LeftPaddingPart>
+          <RightPaddingPart>
+            <FitText compressor={1.3}>
+              <SectionTitle>Hello</SectionTitle>
+            </FitText>
+          </RightPaddingPart>
+        </Section>
+        <ShortSection id="my-projects">
+          <Background color={theme.colours.red}>
+            <FitText compressor={1}>
+              <SectionTitle color={theme.colours.grey} center="horizontal">My projects</SectionTitle>
+            </FitText>
+          </Background>
+        </ShortSection>
+        <Section id="project-examples">
+          <Background color={theme.colours.red}>
+            <Dots>
+              {this.projects.map((project) => (
+                <DotsElem active={activeProject.key === project.key} onClick={() => this.changeDot(project)}>
+                  <div>
+                    <span />
+                  </div>
+                </DotsElem>
+              ))}
+            </Dots>
           </Background>
         </Section>
       </div>
@@ -68,9 +147,100 @@ export default class Detail extends React.Component {
   }
 }
 
+const Dots = styled.div`
+  position: absolute;
+  left: 11rem;
+  bottom: 10.5rem;
+  z-index: 1;
+  transition: opacity .5s .3s;
+  ${media.phoneL`
+    left: 50%;
+    bottom: 10rem;
+    transform: translate3d(-50%,0,0);
+  `}
+`;
+
+const DotsElem = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  transform: translate3d(0,0,0) scaleX(1);
+
+  ${props => !props.active && `
+    :hover {
+      ::before {
+        transform: translate3d(-50%,-50%,0) scale(.6);
+      }
+
+      > div {
+        transform: scaleX(.8);
+
+        > span {
+          transform: translate3d(-50%,-50%,0) scaleY(.8);
+        }
+      }
+    }
+  `}
+
+  ::before {
+    width: .5rem;
+    height: .5rem;
+    background: #fff;
+    transition: transform .5s cubic-bezier(.175,.885,.32,1.275),opacity .5s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    display: block;
+    content: '';
+    border-radius: 50%;
+    ${props => props.active && `
+      transform: translate3d(-50%,-50%,0) scale(0);
+      opacity: 0;
+    `}
+  }
+
+  > div {
+    transition: transform .6s cubic-bezier(.175,.885,.32,1.275) 0s;
+    transform: scaleX(0);
+
+    ${props => props.active && `
+      transform: scaleX(1);
+    `}
+
+    > span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      content: '';
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid #fff;
+      transform: translate3d(-50%,-50%,0) scaleY(0);
+      transition: transform .5s cubic-bezier(.175,.885,.32,1.275), -webkit-transform .5s cubic-bezier(.175,.885,.32,1.275);
+      border-radius: 50%;
+
+      ${props => props.active && `
+        transform: translate3d(-50%,-50%,0) scaleY(1);
+      `}
+    }
+  }
+`
+
 const Section = styled.section`
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  ${media.phoneL`flex-direction: column;`}
+`;
+
+const ShortSection = styled(Section)`
+  height: 50vh
 `;
 
 const Inner = styled.div`
@@ -94,6 +264,10 @@ const Inner = styled.div`
 const Background = styled.div`
   height: 100%;
   width: 100%;
+  background-color: ${props => props.color || ''};
+  padding: ${props => props.padding || 'initial'};
+  position: relative;
+  box-sizing: border-box;
 `;
 
 const LeftPart = styled.div`
@@ -108,20 +282,21 @@ const RightPart = styled(LeftPart)`
 `;
 
 const LeftPaddingPart = styled(LeftPart)`
+  width: auto;
+  flex: 1;
   float: left;
-  padding: 30px;
+  padding: 7vw;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #DFDFDF;
   font-size: 2rem;
   background-color: ${theme.colours.blue};
 `;
 
 const RightPaddingPart = styled(RightPart)`
+  width: auto;
+  flex: 1;
   float: right;
-  padding: 30px;
+  padding: 7vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -153,16 +328,40 @@ const StyledLink = styled.h2`
   padding: 0 20px;
   font-size: 5rem;
   ${media.tablet`font-size: 4rem;`}
-  ${media.phoneL`font-size: 4rem;`}
-  ${media.phoneL`padding: 10px 0;`}
-  ${media.phoneL`display: block;`}
+  ${media.phoneL`
+    font-size: 4rem;
+    padding: 10px 0;
+    display: block;
+  `}
 `;
 
 const SectionTitle = styled.h1`
-  color: ${theme.colours.blue};
-  font-size: 8rem;
-  ${media.tablet`font-size: 7rem;`}
-  ${media.phoneL`font-size: 6rem;`}
-  ${media.phoneM`font-size: 5rem;`}
-  ${media.phoneS`font-size: 4rem;`}
-`
+  color: ${props => props.color || theme.colours.blue};
+  margin: 0;
+  margin-bottom: 60px;
+  ${props => props.center === 'horizontal' && `
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  `}
+`;
+
+const PageLink = styled.a`
+  position: relative;
+  ::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    border-bottom: 2px solid;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .3s cubic-bezier(.4,0,.2,1);
+    bottom: -.625rem;
+  }
+
+  :hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+`;

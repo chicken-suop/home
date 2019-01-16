@@ -40,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  * {
+    outline: none;
+    box-sizing: border-box;
+  }
 `;
 
 ReactDOM.render(
