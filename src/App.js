@@ -13,7 +13,7 @@ class App extends Component {
 
   sayHi() {
     console.log(`
-%c Designed and developed by Elliot Schep aka Ratskin\t
+%c Designed and developed by Elliot "Ratskin" Schep\t
  > Site: https://ratsk.in/home\t\t\t\t\t\t
  > Github: https://github.com/ratskin/home          %c
 `,
