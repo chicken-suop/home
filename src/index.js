@@ -39,6 +39,24 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    position: relative;
+
+    ::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      opacity: 0;
+      border-bottom: 2px solid;
+      transform: scaleX(0);
+      transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .3s cubic-bezier(.4,0,.2,1);
+      bottom: -.625rem;
+    }
+
+    :hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
   }
 
   * {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Paralax from '../components/Paralax';
 import { theme, media } from '../helpers/styledComponentsConfig';
-import { HashLink as Link } from 'react-router-hash-link';
+import { HashLink } from 'react-router-hash-link';
 import FitText from '@kennethormandy/react-fittext'
 import ratskin1 from '../assets/images/ratskin/1.svg';
 import ratskin2 from '../assets/images/ratskin/2.svg';
@@ -77,25 +77,19 @@ export default class Detail extends React.Component {
             <RightPart />
           </Background>
           <Inner>
-            <Link smooth to="#home">
+            <HashLink smooth to="#home">
               <Title>Elliot<br />Schep</Title>
-            </Link>
+            </HashLink>
             <LinksContainer>
-              <Link smooth to="#my-projects">
-                <StyledLink>
-                  <PageLink>My projects</PageLink>
-                </StyledLink>
-              </Link>
-              <Link smooth to="#about">
-                <StyledLink>
-                  <PageLink>about</PageLink>
-                </StyledLink>
-              </Link>
-              <Link smooth to="#resume">
-                <StyledLink>
-                  <PageLink>resume</PageLink>
-                </StyledLink>
-              </Link>
+              <StyledLink>
+                <HashLink smooth to="#about">about</HashLink>
+              </StyledLink>
+              <StyledLink>
+                <HashLink smooth to="#project-examples">projects</HashLink>
+              </StyledLink>
+              <StyledLink>
+                <HashLink smooth to="#resume">resume</HashLink>
+              </StyledLink>
             </LinksContainer>
           </Inner>
         </Section>
@@ -103,16 +97,15 @@ export default class Detail extends React.Component {
           <LeftPaddingPart>
             <FitText compressor={1.3}>
               <SectionTitle color={theme.colours.grey}>
-                I’M A FULL-STACK DEVELOPER WHO CURRENTLY LIVES IN POLAND.
+                FULL-STACK DEVELOPER
               </SectionTitle>
             </FitText>
             <FitText compressor={2}>
               <>
                 <p>
-                  I’m also an independent, self-directed learner and Australian.
-                  Some of my interests are design & art, computer networking and sound recording / reproduction.
+                  I’m an independent, self-directed learner, with interests in design & art, computer networking and sound recording / reproduction.
                 </p>
-                <p>You can contact me at <PageLink href="mailto:elliot@ratsk.in">elliot@ratsk.in</PageLink></p>
+                <a href="mailto:elliot@ratsk.in">elliot@ratsk.in</a>
               </>
             </FitText>
           </LeftPaddingPart>
@@ -122,10 +115,10 @@ export default class Detail extends React.Component {
             </FitText>
           </RightPaddingPart>
         </Section>
-        <ShortSection id="my-projects">
+        <ShortSection id="projects">
           <Background color={theme.colours.red}>
-            <FitText compressor={1}>
-              <SectionTitle color={theme.colours.grey} center="horizontal">My projects</SectionTitle>
+            <FitText compressor={1.4}>
+              <SectionTitle color={theme.colours.grey} center="horizontal">Projects</SectionTitle>
             </FitText>
           </Background>
         </ShortSection>
@@ -133,7 +126,11 @@ export default class Detail extends React.Component {
           <Background color={theme.colours.red}>
             <Dots>
               {this.projects.map((project) => (
-                <DotsElem active={activeProject.key === project.key} onClick={() => this.changeDot(project)}>
+                <DotsElem
+                  key={project.key}
+                  active={activeProject.key === project.key}
+                  onClick={() => this.changeDot(project)}
+                >
                   <div>
                     <span />
                   </div>
@@ -344,24 +341,4 @@ const SectionTitle = styled.h1`
     top: 50%;
     transform: translate(0, -50%);
   `}
-`;
-
-const PageLink = styled.a`
-  position: relative;
-  ::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    left: 0;
-    opacity: 0;
-    border-bottom: 2px solid;
-    transform: scaleX(0);
-    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .3s cubic-bezier(.4,0,.2,1);
-    bottom: -.625rem;
-  }
-
-  :hover::after {
-    opacity: 1;
-    transform: scaleX(1);
-  }
 `;
