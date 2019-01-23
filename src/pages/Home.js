@@ -35,9 +35,9 @@ const Home = () => (
     <Inner>
       <Link className="without" to="#home">
         <Title>
-              Elliot
+          Elliot
           <br />
-              Schep
+          Schep
         </Title>
       </Link>
       <LinksContainer>
