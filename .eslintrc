@@ -18,6 +18,9 @@
     },
     "globals": { "fetch": false, "requestAnimationFrame": true, 'alert': true },
     'env': {
-        'jest': true
+        'jest': true,
+        'browser': true,
+        'node': true,
+        'jasmine': true
     }
 }

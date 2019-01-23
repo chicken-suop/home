@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+// import { HashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 import Paralax from '../components/Paralax';
 import { theme, media } from '../helpers/styledComponentsConfig';
-import { HashLink } from 'react-router-hash-link';
 import ratskin1 from '../assets/images/ratskin/1.svg';
 import ratskin2 from '../assets/images/ratskin/2.svg';
 import ratskin3 from '../assets/images/ratskin/3.svg';
@@ -12,6 +13,8 @@ import ratskin6 from '../assets/images/ratskin/6.svg';
 import ratskin7 from '../assets/images/ratskin/7.svg';
 
 export default class Home extends React.Component {
+  cat = ''
+
   render() {
     return (
       <Section id="home">
@@ -35,18 +38,22 @@ export default class Home extends React.Component {
           <RightPart />
         </Background>
         <Inner>
-          <HashLink className="without" smooth to="#home">
-            <Title>Elliot<br />Schep</Title>
-          </HashLink>
+          <Link className="without" to="#home">
+            <Title>
+              Elliot
+              <br />
+              Schep
+            </Title>
+          </Link>
           <LinksContainer>
             <StyledLink>
-              <HashLink smooth to="#about">about</HashLink>
+              <Link to="about">about</Link>
             </StyledLink>
             <StyledLink>
-              <HashLink smooth to="#project-examples">projects</HashLink>
+              <Link to="project-examples">projects</Link>
             </StyledLink>
             <StyledLink>
-              <HashLink smooth to="#resume">resume</HashLink>
+              <Link to="resume">resume</Link>
             </StyledLink>
           </LinksContainer>
         </Inner>
@@ -79,7 +86,7 @@ const Inner = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-`
+`;
 
 const Background = styled.div`
   height: 100%;
