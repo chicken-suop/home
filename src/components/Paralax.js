@@ -3,7 +3,7 @@ import React from 'react';
 
 export default class Paralax extends React.Component {
   static propTypes = {
-    style: PropTypes.objectOf({}),
+    style: PropTypes.shape({}),
     // Pass height and width
     children: PropTypes.node.isRequired,
     // data-staticlayer: PropTypes.bool
