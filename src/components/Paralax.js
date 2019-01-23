@@ -106,7 +106,7 @@ export default class Paralax extends React.Component {
                 height: '104%',
                 top: '-2%',
                 left: '-2%',
-                transition: 'all 0.1s ease-out',
+                transition: 'all 0.5s ease-out',
                 ...(layers[id] ? layers[id] : {}),
                 ...child.props.style,
               },
