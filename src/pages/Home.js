@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { HashLink as Link } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 import Paralax from '../components/Paralax';
 import { theme, media } from '../helpers/styledComponentsConfig';
@@ -12,55 +11,49 @@ import ratskin5 from '../assets/images/ratskin/5.svg';
 import ratskin6 from '../assets/images/ratskin/6.svg';
 import ratskin7 from '../assets/images/ratskin/7.svg';
 
-export default class Home extends React.Component {
-  cat = ''
-
-  render() {
-    return (
-      <Section id="home">
-        <Background>
-          <Paralax
-            style={{
-              width: '100%',
-              height: '100%',
-              position: 'absolute',
-            }}
-          >
-            <img alt="Part 1" src={ratskin1} />
-            <img alt="Part 2" src={ratskin2} />
-            <img alt="Part 3" src={ratskin3} />
-            <img alt="Part 4" src={ratskin4} />
-            <img alt="Part 5" src={ratskin5} />
-            <img alt="Part 6" src={ratskin6} />
-            <img alt="Part 7" src={ratskin7} />
-          </Paralax>
-          <LeftPart />
-          <RightPart />
-        </Background>
-        <Inner>
-          <Link className="without" to="#home">
-            <Title>
+const Home = () => (
+  <Section id="home">
+    <Background>
+      <Paralax
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+        }}
+      >
+        <img alt="Part 1" src={ratskin1} />
+        <img alt="Part 2" src={ratskin2} />
+        <img alt="Part 3" src={ratskin3} />
+        <img alt="Part 4" src={ratskin4} />
+        <img alt="Part 5" src={ratskin5} />
+        <img alt="Part 6" src={ratskin6} />
+        <img alt="Part 7" src={ratskin7} />
+      </Paralax>
+      <LeftPart />
+      <RightPart />
+    </Background>
+    <Inner>
+      <Link className="without" to="#home">
+        <Title>
               Elliot
-              <br />
+          <br />
               Schep
-            </Title>
-          </Link>
-          <LinksContainer>
-            <StyledLink>
-              <Link to="about">about</Link>
-            </StyledLink>
-            <StyledLink>
-              <Link to="project-examples">projects</Link>
-            </StyledLink>
-            <StyledLink>
-              <Link to="resume">resume</Link>
-            </StyledLink>
-          </LinksContainer>
-        </Inner>
-      </Section>
-    );
-  }
-}
+        </Title>
+      </Link>
+      <LinksContainer>
+        <StyledLink>
+          <Link to="about">about</Link>
+        </StyledLink>
+        <StyledLink>
+          <Link to="project-examples">projects</Link>
+        </StyledLink>
+        <StyledLink>
+          <Link to="resume">resume</Link>
+        </StyledLink>
+      </LinksContainer>
+    </Inner>
+  </Section>
+);
 
 const Section = styled.section`
   height: 100vh;
@@ -139,3 +132,5 @@ const StyledLink = styled.h2`
     display: block;
   `}
 `;
+
+export default Home;
