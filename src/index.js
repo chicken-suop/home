@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createGlobalStyle } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 import aileronRegular from './assets/fonts/Aileron/Aileron-Regular.otf';
 import bigJohn from './assets/fonts/Big John Slim Joe/BIG JOHN.otf';
 import finlandRoundedThin from './assets/fonts/Finland/Finland Rounded Thin.otf';
@@ -25,11 +25,6 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     font-size: 62.5%;
-  }
-
-  html, body {
-    overflow: hidden;
-    -webkit-overflow-scrolling: touch;
   }
 
   body {
@@ -83,7 +78,7 @@ ReactDOM.render(
       <GlobalStyle />
     </>
   </Router>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
