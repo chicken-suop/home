@@ -1,63 +1,240 @@
 import React from 'react';
 import styled from 'styled-components';
+import 'konva';
+import {
+  Stage, Layer, Text, Image,
+} from 'react-konva';
 import { theme, media } from '../helpers/styledComponentsConfig';
-import project01 from '../assets/images/projects/01.png';
-import project02 from '../assets/images/projects/02.png';
-import project03 from '../assets/images/projects/03.png';
+import project01 from '../assets/images/projects/01.jpg';
+import project02 from '../assets/images/projects/02.jpg';
+import project03 from '../assets/images/projects/03.jpg';
 
 export default class ProjectExamples extends React.Component {
   projects = [
     {
       key: '01',
-      title: 'Ratskin homepage',
-      date: '2018',
+      title: 'My homepage',
+      start: '2018',
+      end: 'PRESENT',
       url: 'https://ratsk.in/',
-      image: project01,
+      img: project01,
     },
     {
       key: '02',
       title: 'Voom',
-      date: '2017',
+      start: '2017',
+      end: '2018',
       url: 'https://voom.space/',
-      image: project02,
+      img: project02,
     },
     {
       key: '03',
       title: 'Thinkspace',
-      date: '2018',
+      start: '2018',
+      end: '2018',
       url: 'https://www.thinkspacehq.com/',
-      image: project03,
+      img: project03,
     },
   ]
 
   constructor() {
     super();
+    this.stageWidth = window.innerWidth;
+    this.stageHeight = window.innerHeight;
+    this.constraint = React.createRef();
     this.state = {
       activeProject: this.projects[0],
-    }
+      image: null,
+      imageWidth: window.innerWidth,
+      imageHeight: window.innerHeight,
+      left: 0,
+      top: 0,
+      scaledSize: 0,
+      textWidth: 0,
+      textHeight: 0,
+    };
   }
 
-  changeDot = (dot) => {
-    this.setState({ activeProject: dot })
+  componentDidMount() {
+    const { activeProject } = this.state;
+    this.loadImage(activeProject.img, this.resize);
+    window.addEventListener('resize', this.resize);
+    document.onkeydown = this.listenKeypress;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize');
+  }
+
+  listenKeypress = (e) => {
+    const event = e || window.event;
+    const { activeProject } = this.state;
+    const activeProjectIndex = this.projects.findIndex(project => (
+      project.key === activeProject.key
+    ));
+
+    if (`${event.keyCode}` === '37') {
+      // left arrow
+      this.changeProject(
+        this.projects[activeProjectIndex === 0
+          ? this.projects.length - 1
+          : activeProjectIndex - 1
+        ],
+      );
+    } else if (`${event.keyCode}` === '39') {
+      // right arrow
+      this.changeProject(
+        this.projects[activeProjectIndex === this.projects.length - 1
+          ? 0
+          : activeProjectIndex + 1
+        ],
+      );
+    }
+  };
+
+  loadImage = (img, callback) => {
+    const image = new window.Image();
+    image.src = img;
+    image.onload = () => {
+      this.setState({ image }, callback);
+    };
+  }
+
+  resize = () => {
+    this.stageWidth = this.constraint.current.clientWidth;
+    this.stageHeight = this.constraint.current.clientHeight;
+    this.imageCoverConstraint();
+    this.scaledFontsize();
+  }
+
+  imageCoverConstraint = () => this.setState((prevState) => {
+    // https://www.w3.org/TR/css3-images/#cover-constraint
+    // "A cover constraint is resolved by setting the
+    // concrete object size to the smallest rectangle
+    // that has the object's intrinsic aspect ratio and
+    // additionally has neither width nor height smaller
+    // than the constraint rectangle's width and height,
+    // respectively."
+
+    if (prevState.image) {
+      // Fit image to constraint, by scaling and positioning
+      const isPortrait = this.stageHeight > this.stageWidth;
+      const windowProp = isPortrait
+        ? this.stageHeight
+        : this.stageWidth;
+      const aspect = prevState.image.naturalWidth / prevState.image.naturalHeight;
+
+      const output = {
+        imageWidth: windowProp / aspect,
+        imageHeight: windowProp / aspect,
+      };
+      output.left = isPortrait
+        ? (output.imageWidth - this.stageWidth) / -2
+        : 0;
+      output.top = this.stageHeight - output.imageHeight;
+      return output;
+    }
+    return {};
+  });
+
+  scaledFontsize = () => {
+    // calc the scaled fontsize needed to fill the desired width
+    const { activeProject } = this.state;
+    const text = activeProject.title;
+    const fontface = 'BigJohn';
+    const desiredWidth = this.stageWidth * 0.5;
+    const can = document.createElement('canvas');
+    const cctx = can.getContext('2d');
+    const testFontsize = 18;
+    cctx.font = `${testFontsize}px ${fontface}`;
+    const textWidth = cctx.measureText(text).width;
+    this.setState({
+      scaledSize: testFontsize * desiredWidth / textWidth,
+    }, this.repositionText);
+  }
+
+  repositionText = () => this.setState({
+    textWidth: this.title.getTextWidth(),
+    textHeight: this.title.getTextHeight(),
+  });
+
+  changeProject = (project) => {
+    this.setState({ activeProject: project });
+    this.loadImage(project.img);
+    this.repositionText();
   }
 
   render() {
-    const { activeProject } = this.state;
+    const {
+      activeProject,
+      scaledSize,
+      image,
+      imageWidth,
+      imageHeight,
+      left,
+      top,
+      textWidth,
+      textHeight,
+    } = this.state;
+
+    // console.log(textHeight);
+    const titleX = (this.stageWidth - textWidth) / 2;
+    const titleY = (this.stageHeight - textHeight) / 2;
 
     return (
       <Section id="project-examples">
         <Background color={theme.colours.red}>
+          <div ref={this.constraint}>
+            <Stage width={this.stageWidth} height={this.stageHeight}>
+              <Layer>
+                <Image
+                  image={image}
+                  width={imageWidth}
+                  height={imageHeight}
+                  x={left}
+                  y={top}
+                />
+                <Text
+                  ref={(node) => { this.title = node; }}
+                  x={titleX}
+                  y={titleY}
+                  text={activeProject.title}
+                  fontSize={scaledSize}
+                  fontFamily="BigJohn"
+                  fill="#fafafa"
+                  align="center"
+                  verticalAlign="middle"
+                />
+                <Text
+                  x={titleX - (textWidth * 0.15)}
+                  y={titleY - (textHeight * 0.15)}
+                  text={activeProject.key}
+                  fontSize={scaledSize * 0.15}
+                  fontFamily="BigJohn"
+                  fill="#fafafa"
+                />
+                <Text
+                  x={titleX + textWidth}
+                  y={titleY + (textHeight * 0.85)}
+                  text={`${activeProject.start}-${activeProject.end}`}
+                  fontSize={scaledSize * 0.15}
+                  fontFamily="BigJohn"
+                  fill="#fafafa"
+                />
+              </Layer>
+            </Stage>
+          </div>
           <Dots>
-            {this.projects.map((project) => (
-              <DotsElem
+            {this.projects.map(project => (
+              <Dot
                 key={project.key}
                 active={activeProject.key === project.key}
-                onClick={() => this.changeDot(project)}
+                onClick={() => this.changeProject(project)}
               >
                 <div>
                   <span />
                 </div>
-              </DotsElem>
+              </Dot>
             ))}
           </Dots>
         </Background>
@@ -79,7 +256,7 @@ const Dots = styled.div`
   `}
 `;
 
-const DotsElem = styled.div`
+const Dot = styled.div`
   position: relative;
   display: inline-block;
   width: 1.5rem;
@@ -148,7 +325,7 @@ const DotsElem = styled.div`
       `}
     }
   }
-`
+`;
 
 const Section = styled.section`
   height: 100vh;
@@ -161,8 +338,19 @@ const Section = styled.section`
 const Background = styled.div`
   height: 100%;
   width: 100%;
+  overflow: hidden;
   background-color: ${props => props.color || ''};
   padding: ${props => props.padding || 'initial'};
   position: relative;
-  box-sizing: border-box;
+
+  > div:first-child {
+    ${'' /* height: 90%;
+    width: 90%;
+    padding: 5%; */}
+    ${media.phoneL`
+      height: 100%;
+      width: 100%;
+      padding: 0;
+    `}
+  }
 `;

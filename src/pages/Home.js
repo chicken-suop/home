@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import Paralax from '../components/Paralax';
 import { theme, media } from '../helpers/styledComponentsConfig';
 import ratskin1 from '../assets/images/ratskin/1.svg';
@@ -42,13 +42,13 @@ const Home = () => (
       </Link>
       <LinksContainer>
         <StyledLink>
-          <Link to="about">about</Link>
+          <Link to="#about">about</Link>
         </StyledLink>
         <StyledLink>
-          <Link to="project-examples">projects</Link>
+          <Link to="#project-examples">projects</Link>
         </StyledLink>
         <StyledLink>
-          <Link to="resume">resume</Link>
+          <Link to="#resume">resume</Link>
         </StyledLink>
       </LinksContainer>
     </Inner>
