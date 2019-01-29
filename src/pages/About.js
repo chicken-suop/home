@@ -90,6 +90,10 @@ const LeftPart = styled.div`
   color: #DFDFDF;
   font-size: 2rem;
   background-color: ${theme.colours.blue};
+  ${media.phoneL`
+    order: 2;
+    flex: 2;
+  `}
 `;
 
 const RightPart = styled.div`
