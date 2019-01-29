@@ -48,19 +48,6 @@
             }
         }
 
-        .loader-hidden .mask-layer {
-            animation: mask 1s forwards, opacity 1s forwards;
-        }
-
-        .loader-hidden + #root {
-            transform: scaleX(1);
-            opacity: 1;
-        }
-
-        .loader-hidden .background, .loader-hidden .white-layer {
-            animation: opacity 1s forwards;
-        }
-
         .loader {
             width: 100vw;
             height: 100vh;
@@ -68,6 +55,20 @@
             top: 0;
             left: 0;
             z-index: 1;
+            pointer-events: none;
+        }
+
+        .loader.loader-hidden .mask-layer {
+            animation: mask 1s forwards, opacity 1s forwards;
+        }
+
+        .loader.loader-hidden + #root {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .loader.loader-hidden .background, .loader-hidden .white-layer {
+            animation: opacity 1s forwards;
         }
 
         .layer {
