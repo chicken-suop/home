@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import ProjectExamples from './pages/ProjectExamples';
 
-class App extends Component {
+class App extends React.Component {
+  static propTypes = {
+    // showLoader: PropTypes.func.isRequired,
+    hideLoader: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super();
     this.sayHi();
+  }
+
+  componentDidMount() {
+    const { hideLoader } = this.props;
+    hideLoader();
   }
 
   sayHi = () => {

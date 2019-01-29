@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 import aileronRegular from './assets/fonts/Aileron/Aileron-Regular.otf';
 import bigJohn from './assets/fonts/Big John Slim Joe/BIG JOHN.otf';
 import finlandRoundedThin from './assets/fonts/Finland/Finland Rounded Thin.otf';
@@ -71,15 +71,24 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const loader = document.querySelector('.loader');
+const showLoader = () => loader.classList.remove('loader-hidden');
+const hideLoader = () => loader.classList.add('loader-hidden');
+
+// setTimeout(() => {
 ReactDOM.render(
   <Router basename={process.env.PUBLIC_URL}>
     <>
-      <App />
+      <App
+        showLoader={showLoader}
+        hideLoader={hideLoader}
+      />
       <GlobalStyle />
     </>
   </Router>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
+// }, 1000);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
