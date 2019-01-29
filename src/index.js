@@ -75,7 +75,6 @@ const loader = document.querySelector('.loader');
 const showLoader = () => loader.classList.remove('loader-hidden');
 const hideLoader = () => loader.classList.add('loader-hidden');
 
-// setTimeout(() => {
 ReactDOM.render(
   <Router basename={process.env.PUBLIC_URL}>
     <>
@@ -88,7 +87,6 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root'),
 );
-// }, 1000);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
