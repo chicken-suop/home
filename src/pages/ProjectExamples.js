@@ -81,6 +81,7 @@ export default class ProjectExamples extends React.Component {
     return (
       <Section id="project-examples">
         <Background color={theme.colours.red}>
+          <Main><span>Nothing here yet.</span></Main>
           <Dots
             dots={this.projects}
             isActive={dot => activeProject.key === dot.key}
@@ -107,4 +108,11 @@ const Background = styled.div`
   background-color: ${props => props.color || ''};
   padding: ${props => props.padding || 'initial'};
   position: relative;
+`;
+
+const Main = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
